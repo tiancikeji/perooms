@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929134415) do
+ActiveRecord::Schema.define(:version => 20121002021131) do
+
+  create_table "hotels", :force => true do |t|
+    t.string   "address1"
+    t.string   "airportCode"
+    t.string   "city"
+    t.string   "countryCode"
+    t.string   "deepLink"
+    t.string   "name"
+    t.string   "shortDescription"
+    t.string   "thumbNailUrl"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -30,6 +43,15 @@ ActiveRecord::Schema.define(:version => 20120929134415) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "rooms", :force => true do |t|
+    t.string   "roomDescription"
+    t.string   "rateCode"
+    t.string   "roomTypeCode"
+    t.integer  "hotel_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -1,0 +1,1 @@
+curl -d'minorRev=&cid=381126&apiKey=6bbj2j6dsw4gy74q2xkgshdc&locale=en_US&currencyCode=USD&city=Seattle&stateProvinceCode=WA&countryCode=US&supplierCacheTolerance=MED&arrivalDate=10/04/2012&departureDate=10/05/2012&room1=1,3&room2=1,5&supplierCacheTolerance=MED_ENHANCED' http://api.ean.com/ean-services/rs/hotel/v3/list

@@ -1,0 +1,17 @@
+<table class="table">
+  <% @hotels.each do |hotel| %>
+    <tr>
+      <td><%=hotel["thumbNailUrl"] %></td>
+      <td><%=hotel["hotelId"] %></td>
+      <td><%=hotel["address1"] %></td>
+      <td><%=hotel["city"] %></td>
+      <td><%=hotel["postalCode"] %></td>
+      <td><%=hotel["airportCode"] %></td>
+      <td><%=hotel["countryCode"] %></td>
+      <td><%=raw hotel["shortDescription"] %></td>
+      <td><%=hotel["stateProvinceCode"] %></td>
+      <td><%=hotel["name"] %></td>
+      <td><a href="<%= hotel["deepLink"] %>" class="btn btn-primary">book now</a></td>
+    </tr>
+   <% end %>
+</table>

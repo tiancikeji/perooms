@@ -1,0 +1,37 @@
+<h1>Listing hotels</h1>
+
+<table>
+  <tr>
+    <th>Address1</th>
+    <th>Airportcode</th>
+    <th>City</th>
+    <th>Countrycode</th>
+    <th>Deeplink</th>
+    <th>Name</th>
+    <th>Shortdescription</th>
+    <th>Thumbnailurl</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hotels.each do |hotel| %>
+  <tr>
+    <td><%= hotel.address1 %></td>
+    <td><%= hotel.airportCode %></td>
+    <td><%= hotel.city %></td>
+    <td><%= hotel.countryCode %></td>
+    <td><%= hotel.deepLink %></td>
+    <td><%= hotel.name %></td>
+    <td><%= hotel.shortDescription %></td>
+    <td><%= hotel.thumbNailUrl %></td>
+    <td><%= link_to 'Show', hotel %></td>
+    <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
+    <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hotel', new_hotel_path %>

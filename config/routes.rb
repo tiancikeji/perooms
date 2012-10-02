@@ -1,4 +1,10 @@
 Perooms::Application.routes.draw do
+  post "hotelsearch/result"
+
+  resources :rooms
+
+  resources :hotels
+
   resources :pages do
     collection do
       get 'home'
