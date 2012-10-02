@@ -1,10 +1,14 @@
 Perooms::Application.routes.draw do
-  resources :pages
+  resources :pages do
+    collection do
+      get 'home'
+    end
+  end
 
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'pages#home'
   end
-  root :to => "home#index"
+  root :to => "pages#home"
   devise_for :users
-  resources :users, :only => [:show, :index]
+  # resources :users, :only => [:show, :index]
 end
