@@ -5,3 +5,56 @@
 .clearfix:after { content: ""; display: block; height: 0; clear: both; }
 .clearfix { +zoom: 1; }
 .clr {clear: both; display: block; font-size: 0; height: 0; line-height: 0; overflow: hidden;}
+
+.banner-home {
+	height: 460px;
+	background: url(bg-banner.jpg) no-repeat top;
+}
+
+.search-home, .aboutus-home {
+	padding: 14px 20px;
+	float: left;
+	border-radius: 5px;
+	box-shadow: 1px 5px 10px #666;
+}
+
+.search-home h2, .aboutus-home h2 {
+	font-size: 28px;
+	color: #00598F;
+}
+
+.search-home h2, .search-home form, .aboutus-home h2, .aboutus-home ul {
+	position:relative; /* fix ie text transparent */
+}
+
+.search-home {
+	width: 360px;
+	margin: 100px 100px 0 80px;
+	background:rgba(214,209,156,0.8) !important;
+	filter:alpha(opacity=80); 
+	background:#D6D19C; 
+}
+
+.aboutus-home {
+	width: 320px;
+	margin-top: 180px;
+	background:rgba(207,208,207,0.8) !important;
+	filter:alpha(opacity=80); 
+	background:#CFD0CF; 
+}
+
+.aboutus-home ul li {
+	margin-top: 16px;
+	color: #424242;
+}
+
+.aboutus-home ul li h3 {
+	font-size: 20px;
+	margin-bottom: 4px;
+}
+
+.aboutus-home ul li p {
+	font-size: 14px;
+}
+
+
