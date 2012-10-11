@@ -1,45 +1,107 @@
-<p id="notice"><%= notice %></p>
+<div class="clearfix">
 
-<p>
-  <b>Address1:</b>
-  <%= @hotel.address1 %>
-</p>
+  <div class="secondary">
+    <div class="sideSearch">
+      <h1 class="tit">Search Hotels</h1>
+      <div class="cont">
+        <p><label>Destination/Hotel Name</label><input type="text" class="sc_input" value="China,Beijing"></p>
+        <p class="c_date"><label>Check-in Date</label><input type="text" class="sc_input sc_input_date"><span class="icon"></span></p>
+        <p class="c_date"><label>Check-out Date</label><input type="text" class="sc_input sc_input_date"><span class="icon"></span></p>
+        <p class="c_col">
+        <span><label>Rooms</label>
+          <select class="sc_select"><option>1</option><option>2</option></select></span>
+        <span><label>Adults</label>
+          <select class="sc_select"><option>1</option><option>2</option></select></span>
+        <span><label>Children</label>
+          <select class="sc_select"><option>1</option><option>2</option></select></span>
+        </p>
+        <div class="OB_clearB"></div>
+        <p class="sc_p"><input type="button" class="btn_search" value=""></p>
+      </div>
+    </div>
+    <p class="s_banner"><a href="#"><img src="/assets/p_1.jpg"></a></p>
+  </div>
 
-<p>
-  <b>Airportcode:</b>
-  <%= @hotel.airportCode %>
-</p>
+  <div class="primary">
+    <h1 class="big_hotel_name">Marque Hotel Brisbane<span class="t_star t_star_2">星级</span></h1>
+    <p class="pr_address">247/ 1-8 Nuanai Road Patong Beach, Phuket, Thailand (<a href="#">show map</a>)</p>
+    <div class="pr_menu">
+      <a href="#rooms" class="cur">Hotel Info</a><a href="#rooms">Rooms</a><a href="#map">Map</a><a href="#policy">Policy</a><a href="#">Amenties</a>
+    </div>
+    <div class="h_basicInfo">
+      <div class="h_photoWrap"></div>
+      <div class="h_photo" style="background-image:url(http://i.okaybuy.cn/images/multipic/new/201204/b3/b3526b290570ffe2e8a78cc31bceaa6b.jpg);"></div>
+      <div class="h_photoSmall">
+        <a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a><a href="#"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg"></a>
+        <span class="h_txtInfo">The Siam Kempinski Hotel is a superb venue to stop for both business and relaxation. Located in the vibrant Pathum Wan, the hotel is known for its comfort and exceptional service. The neighbourhood is famous for shopping. The hotel offers a tour desk, a day spa and free Wi-Fi as well as a beauty centre, a steam room and a sauna.<br>The Siam Kempinski Hotel is a superb venue to stop for both business and relaxation. Located in the vibrant Pathum Wan, the hotel is known for its comfort and exceptional service. The neighbourhood is famous for shopping. The hotel offers a tour desk, a day spa and free Wi-Fi as well as a beauty centre, a steam room and a sauna.</span>
+      </div>
+      <div class="OB_clearB"></div>
+    </div>
 
-<p>
-  <b>City:</b>
-  <%= @hotel.city %>
-</p>
+    <div class="h_rooms">
+      <h1 id="rooms">Room & Rats</h1>
+      <div class="h_roomsCon">
+        <table class="tb_room">
+          <thead>
+            <tr>
+              <th class="first">Room Type</th>
+              <th width="200">Conditions</th>
+              <th width="90">Rate</th>
+              <th>Reservation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="first"><a href="#"><img src="/assets/p_3.jpg"></a><a href="#">Talay suite</a></td>
+              <td><p>FREE cancellation</p><p>Breakfast included</p></td>
+              <td><span class="txt_green fbold">CNY 1000</span></td>
+              <td><a href="#" class="btn_bookNow">Book Now</a></td>
+            </tr>
+            <tr>
+              <td class="first"><a href="#"><img src="/assets/p_3.jpg"></a><a href="#">Talay suite</a></td>
+              <td><p>FREE cancellation</p><p>Breakfast included</p></td>
+              <td><span class="txt_green fbold">CNY 1000</span></td>
+              <td><a href="#" class="btn_bookNow">Book Now</a></td>
+            </tr>
+            <tr class="last">
+              <td class="first"><a href="#"><img src="/assets/p_3.jpg"></a><a href="#">Talay suite</a></td>
+              <td><p>FREE cancellation</p><p>Breakfast included</p></td>
+              <td><span class="txt_green fbold">CNY 1000</span></td>
+              <td><a href="#" class="btn_bookNow">Book Now</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="h_infoCol">
+      <h1 id="map">Hotel Maps</h1>
+      <div class="h_infoMap"><a href="#"><img src="/assets/p_4.jpg"></a></div>
+    </div>
+    <div class="h_infoCol">
+      <h1 id="policy">Hotel Policies&Fees</h1>
+      <div class="h_infoBox">
+        <ul class="listUL">
+          <li>Business Centre</li>
+          <li>CurrencyCurrencyCurrencyCurrencyCurrencyCurrencyCurrency Exchange Services</li>
+          <li>Faxing Facilities</li>
+          <li>Internet Access - Wireless</li>
+          <li>Lobby</li>
+          <li>Photocopying Facilities</li>
+          <li>Sauna</li>
+          <li>Tour Desk</li>
+          <li>Business Centre</li>
+          <li>Currency Exchange Services</li>
+          <li>Faxing Facilities</li>
+          <li>Internet Access - Wireless</li>
+          <li>Lobby</li>
+          <li>Photocopying Facilities</li>
+          <li>Sauna</li>
+          <li>Tour Desk</li>
+        </ul>
+      </div>
+    </div>      
+  </div>
 
-<p>
-  <b>Countrycode:</b>
-  <%= @hotel.countryCode %>
-</p>
-
-<p>
-  <b>Deeplink:</b>
-  <%= @hotel.deepLink %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @hotel.name %>
-</p>
-
-<p>
-  <b>Shortdescription:</b>
-  <%= @hotel.shortDescription %>
-</p>
-
-<p>
-  <b>Thumbnailurl:</b>
-  <%= @hotel.thumbNailUrl %>
-</p>
+</div>
 
 
-<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
-<%= link_to 'Back', hotels_path %>
