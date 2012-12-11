@@ -9,6 +9,7 @@ end
 gem 'jquery-rails'
 gem 'quiet_assets', :group => [:development, :test]
 gem 'thin', :group => [:development]
+gem 'quiet_assets', :group => [:development]
 gem 'mysql2', :group => [:production]
 gem "rspec-rails", ">= 2.11.0", :group => [:development, :test]
 gem "factory_girl_rails", ">= 3.5.0", :group => [:development, :test]

@@ -5,13 +5,15 @@
 		<form action="/hotelsearch/result" method="post" accept-charset="utf-8">
 			<div>
 				<p>Where</p>
-				<p><input type="text" name="" id="" value="" /></p>
+				<p><input type="text" name="city" id="" value="Seattle" /></p>
+				<p><input type="text" name="province" id="" value="WA" /></p>
+				<p><input type="text" name="countrycode" id="" value="US" /></p>
 			</div>
 			<div>
 				<p>When</p>
 				<p>
-					<input type="text" name="" id="" value="" />
-					<input type="text" name="" id="" value="" />
+					<input type="text" name="arrivalDate" id="arrivalDate" value="" />
+					<input type="text" name="departureDate" id="departureDate" value="" />
 				</p>
 			</div>
 			<div>
@@ -62,3 +64,9 @@
 	</div>
 	
 </div>
+<script>
+      $(function() {
+        $( "#arrivalDate" ).datepicker();
+        $( "#departureDate" ).datepicker();
+      });
+    </script>

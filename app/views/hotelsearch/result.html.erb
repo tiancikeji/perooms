@@ -18,7 +18,7 @@
         <p class="sc_p"><input type="button" class="btn_search" value=""></p>
       </div>
     </div>
-    <p class="s_map"><a href="#"><img src="../../resources/images/p_5.jpg"></a></p>
+    <p class="s_map"><a href="#"><img src="/assets/p_5.jpg"></a></p>
     <div class="s_filter">
       <h2>Refine Your Search</h2>
       <div class="cont clear">
@@ -66,24 +66,29 @@
   </div>
 
   <div class="primary">
-    <h1 class="list_result">1,888 Beijing Hotels</h1>
+    <h1 class="list_result"><%=@size %> <%=@city %> Hotels</h1>
     <div class="list_sort">
       <span class="first">Sort by:</span><a href="#" class="current">Recommended</a><a href="#">Stars</a><a href="#" class="current up">Distance</a><a href="#">Price</a><a href="#">Guest Rating</a>
     </div>
 
   <% @hotels.each do |hotel| %>
     <div class="list_col clear">
-      <p class="list_hotel_img"><img src="../../resources/images/p_6.jpg"></p>
+      <p class="list_hotel_img"><img src="http://media.expedia.com/<%=hotel['thumbNailUrl'] %>"></p>
       <div class="list_col_cont clear">
         <div class="left">
           <h1><%=hotel["name"] %><span class="t_star t_star_2">星级</span></h1>
           <p>247/ 1-8 Nuanai Road Patong Beach, Phuket, Thailand</p>
           <p class="list_txt"><a href="#">show map</a>Last booking:23 minutes ago</p>
-          <p class="list_img"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43"><img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43"></p>
+          <p class="list_img">
+            <img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43">
+            <img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43">
+            <img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43">
+            <img src="http://media.expedia.com/hotels/1000000/50000/43400/43312/43312_83_t.jpg" width="43">
+          </p>
         </div>
         <div class="right">
           <p class="list_txt_price">form <span><em>CNY</em>4900</span></p>
-          <p><a href="/hotels/1" class="btnLinkBookNow">Book Now</a></p>
+          <p><a href="<%=hotel['deepLink'] %>" class="btnLinkBookNow">Book Now</a></p>
         </div>
         <div class="OB_clearB"></div>
         <div class="list_room_type">
