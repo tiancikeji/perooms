@@ -132,7 +132,7 @@ ul.listUL li{float:left;width:48%;background:url(icon_dot.png) no-repeat 0;paddi
 .s_filter .cont .s_col_db_star .t_star{margin:0;*margin-top:-3px;}
 
 h1.list_result{font-size:16px;}
-.list_sort{backgroun-position:0 0;background-repeat:repeat-x;height:31px;border:1px solid #e8e8e8;margin-top:5px;margin-bottom:20px;padding-left:10px;}
+.list_sort{backgroun-position:0 0;background-repeat:repeat-x;height:31px;border:1px solid #ccc;margin-top:5px;margin-bottom:20px;padding-left:10px;}
 .list_sort span.first{display:block;float:left;border:0;line-height:31px;font-weight:bold;margin-right:10px;}
 .list_sort a{display:block;float:left;line-height:31px;height:31px;padding:0 18px;border-right:1px solid #e4e4e4;}
 .list_sort a.current{background-position:right -58px;background-color:#005b93;color:#fff;}
