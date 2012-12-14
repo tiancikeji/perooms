@@ -3,24 +3,23 @@
 	<div class="search-home">
 		<h2>Search  Hotels</h2>
 		<form action="/hotelsearch/result" method="post" accept-charset="utf-8">
-	
-			<div class="search-item mt20 clearfix">
-				<label for="ipt-Destination">Destination / Hotel Name</label>
-				<input class="ipt-search w350" type="text" name="" id="ipt-Destination" value="" />
-				<p><span class="c-error">error message</span></p>
+			<div class="search-item mt20 clearfix ui-widget">
+				<label for="destinationString">Destination / Hotel Name</label>
+				<input class="ipt-search w350" type="text" name="destinationString" id="destinationString" value="" placeholder="Please provide either a city, region, country, landmark, hotel, or district" />
+				<p style="display:none;"><span class="c-error">error message</span></p>
 			</div>
 			
 			<div class="mt20 clearfix">
 				<div class="search-item fl">
 					<label for="ipt-inDate">Check-in Date</label>
-					<p><input class="ipt-search w160" type="text" name="arrivalDate" id="arrivalDate" value="" /></p>
-					<p><span class="c-error">error message</span></p>
+					<p><input class="ipt-search w160" type="text" name="arrivalDate" id="arrivalDate" value="" placeholder="Please enter your Check-in date" /></p>
+					<p style="display:none;"><span class="c-error">error message</span></p>
 				</div>
 				
 				<div class="search-item fl">
 					<label for="ipt-outDate">Check-out Date</label>
-					<p><input class="ipt-search w160" type="text" name="departureDate" id="departureDate" value="" /></p>
-					<p><span class="c-error">error message</span></p>
+					<p><input class="ipt-search w160" type="text" name="departureDate" id="departureDate" value=""  placeholder="Please enter your Check-out date"/></p>
+					<p style="display:none;"><span class="c-error">error message</span></p>
 				</div>
 
 			</div>
@@ -41,7 +40,7 @@
 					<p>
 						<select class="sel-search" name="" id="sel-adults">
 						  <option value="">1</option>
-						  <option value="">2</option>
+						  <option value="" seleced>2</option>
 						</select>
 					</p>
 				</div>
@@ -50,6 +49,7 @@
 					<label for="sel-children">children</label>
 					<p>
 						<select class="sel-search" name="" id="sel-children">
+						  <option value="0" seleced>0</option>
 						  <option value="">1</option>
 						  <option value="">2</option>
 						</select>
@@ -58,7 +58,7 @@
 			</div>
 			
 			<div class="mt20 tr clearfix">
-				<input class="btn btn-large" type="submit" title="Search" value="Search">
+				<input class="btn btn-large" type="submit" title="Search Hotels" value="Search">
 			</div>
 		</form>
 	</div>
@@ -87,241 +87,275 @@
 
 <script>
       $(function() {
+        $( "#destinationString" ).autocomplete({
+            source: function( request, response ) {
+                $.ajax({
+                    url: "/hotelsearch/getlocations",
+                    // dataType: "jsonp",
+                    data: {
+                        destinationString:$("#destinationString").val() 
+                    },
+                    success: function( data ) {
+                        // alert(data);
+                        response( $.map( data.LocationInfoResponse.LocationInfos.LocationInfo, function( item ) {
+                            // console.log(item);
+                            return {
+                                label: item.description,
+                                value: item.description
+                            }
+                        }));
+                    }
+                });
+            },
+            minLength: 2
+            // select: function( event, ui ) {
+            //     log( ui.item ?
+            //         "Selected: " + ui.item.label :
+            //         "Nothing selected, input was " + this.value);
+            // },
+            // open: function() {
+            //     $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+            // },
+            // close: function() {
+            //     $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+            // }
+        });
+
         $( "#arrivalDate" ).datepicker();
         $( "#departureDate" ).datepicker();
       });
     </script>
 
-<!--/.banner-home -->
+    <!--/.banner-home -->
 
 
-<div class="container clearfix">
+    <div class="container clearfix">
 
-	<div class="content fl">
-		<h2 class="title">Popular Destinations</h2>
+      <div class="content fl">
+        <h2 class="title">Popular Destinations</h2>
 
-		<div class="popular">
-			<ul class="mod-a">
-				<li>
-					<div class="mod-pic pic-size120 fl">
-						<a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info fl">
-						<p><strong>Paris</strong></p>
-						<p class="f-size14">France</p>
-						<p class="f-size14">1837 hotels</p>
-					</div>
-				</li>
-				
-				<li>
-					<div class="mod-pic pic-size120 fl">
-						<a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info fl">
-						<p><strong>Paris</strong></p>
-						<p class="f-size14">France</p>
-						<p class="f-size14">1837 hotels</p>
-					</div>
-				</li>
-				
-				<li>
-					<div class="mod-pic pic-size120 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info fl">
-						<p><strong>Paris</strong></p>
-						<p class="f-size14">France</p>
-						<p class="f-size14">1837 hotels</p>
-					</div>
-				</li>
-				
-				<li>
-					<div class="mod-pic pic-size120 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info fl">
-						<p><strong>Paris</strong></p>
-						<p class="f-size14">France</p>
-						<p class="f-size14">1837 hotels</p>
-					</div>
-				</li>
-				
-				<li>
-					<div class="mod-pic pic-size120 fl">
-						<a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info fl">
-						<p><strong>Paris</strong></p>
-						<p class="f-size14">France</p>
-						<p class="f-size14">1837 hotels</p>
-					</div>
-				</li>
-				
-				<li>
-					<div class="mod-pic pic-size120 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info fl">
-						<p><strong>Paris</strong></p>
-						<p class="f-size14">France</p>
-						<p class="f-size14">1837 hotels</p>
-					</div>
-				</li>
-			</ul>
-			<p class="f-size16"><a href="#"><strong>more destinations&gt;&gt;</strong></a></p>
-		</div>
-		<!--/.popular -->
-		
-		<div class="countries">
-			<h2 class="title">203,956 hotels in 165 countries worldwide</h2>
-			
-			<div class="countries-place clearfix">
-				<ul class="clearfix">
-					<li class="on-active"><a href="">Europe</a><span>|</span></li>
-					<li><a href="">North America</a><span>|</span></li>
-					<li><a href="">South America</a><span>|</span></li>
-					<li><a href="">Asia</a><span>|</span></li>
-					<li><a href="">Oceania Africa</a></li>
-				</ul>
-				<div class="countries-list">
-					<ul class="clearfix">                                                                                  
-						<li><a href="#">Italy</a></li>
-						<li><a href="#">Germany</a></li>
-						<li><a href="#">France</a></li>
-						<li><a href="#">Spain</a></li>
-						<li><a href="#">Austria</a></li>
-						<li><a href="#">Greece</a></li>
-						<li><a href="#">Turkey</a></li>
-						<li><a href="#">Poland</a></li>
-						<li><a href="#">Netherlands</a></li>
-						<li><a href="#">Czech</a></li>
-						<li><a href="#">Republic</a></li>
-						<li><a href="#"> Croatia</a></li>
-					</ul>
-					<p class="f-size14"><a href="#">More&gt;&gt;</a></p>
-				</div>
-			</div>
-			<!--/.countries-place -->
-			
-			<div class="countries-map">
-				<img src="/assets/pic-map.jpg" alt="map" />
-			</div>
-			<!--/.countries-map -->
-				
-		</div>
-		<!--/.countries -->
+        <div class="popular">
+          <ul class="mod-a">
+            <li>
+            <div class="mod-pic pic-size120 fl">
+              <a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info fl">
+              <p><strong>Paris</strong></p>
+              <p class="f-size14">France</p>
+              <p class="f-size14">1837 hotels</p>
+            </div>
+            </li>
 
-	</div>
-	<!--/.content -->
+            <li>
+            <div class="mod-pic pic-size120 fl">
+              <a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info fl">
+              <p><strong>Paris</strong></p>
+              <p class="f-size14">France</p>
+              <p class="f-size14">1837 hotels</p>
+            </div>
+            </li>
 
-	<div class="sidebar fr">
-		<h2 class="title">My Viewed Hotels</h2>
-		
-		<div class="view-hotels clearfix">
-			<ul class="mod-a">
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-				
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-				
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-				
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<!--/.view-hotels -->
-		
-		<div class="ads ads-440">
-			<a href="#"><img src="/assets/pic-ad.jpg" alt="Beijing Hotels" /></a>
-		</div>
-		<!--/.ads -->
-		
-		<div class="view-hotels clearfix">
-			<ul class="mod-a">
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-				
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-				
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-				
-				<li class="clearfix">
-					<div class="mod-pic pic-size80 fl">
-						<a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
-					</div>
-					<div class="mod-info w340 fl">
-						<p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
-						<p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
-						<p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<!--/.view-hotels -->
+            <li>
+            <div class="mod-pic pic-size120 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info fl">
+              <p><strong>Paris</strong></p>
+              <p class="f-size14">France</p>
+              <p class="f-size14">1837 hotels</p>
+            </div>
+            </li>
 
-	</div>
-	<!--/.sidebar -->
-	
-</div>
-<!--/.container -->
+            <li>
+            <div class="mod-pic pic-size120 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info fl">
+              <p><strong>Paris</strong></p>
+              <p class="f-size14">France</p>
+              <p class="f-size14">1837 hotels</p>
+            </div>
+            </li>
+
+            <li>
+            <div class="mod-pic pic-size120 fl">
+              <a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info fl">
+              <p><strong>Paris</strong></p>
+              <p class="f-size14">France</p>
+              <p class="f-size14">1837 hotels</p>
+            </div>
+            </li>
+
+            <li>
+            <div class="mod-pic pic-size120 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info fl">
+              <p><strong>Paris</strong></p>
+              <p class="f-size14">France</p>
+              <p class="f-size14">1837 hotels</p>
+            </div>
+            </li>
+          </ul>
+          <p class="f-size16"><a href="#"><strong>more destinations&gt;&gt;</strong></a></p>
+        </div>
+        <!--/.popular -->
+
+        <div class="countries">
+          <h2 class="title">203,956 hotels in 165 countries worldwide</h2>
+
+          <div class="countries-place clearfix">
+            <ul class="clearfix">
+              <li class="on-active"><a href="">Europe</a><span>|</span></li>
+              <li><a href="">North America</a><span>|</span></li>
+              <li><a href="">South America</a><span>|</span></li>
+              <li><a href="">Asia</a><span>|</span></li>
+              <li><a href="">Oceania Africa</a></li>
+            </ul>
+            <div class="countries-list">
+              <ul class="clearfix">                                                                                  
+                <li><a href="#">Italy</a></li>
+                <li><a href="#">Germany</a></li>
+                <li><a href="#">France</a></li>
+                <li><a href="#">Spain</a></li>
+                <li><a href="#">Austria</a></li>
+                <li><a href="#">Greece</a></li>
+                <li><a href="#">Turkey</a></li>
+                <li><a href="#">Poland</a></li>
+                <li><a href="#">Netherlands</a></li>
+                <li><a href="#">Czech</a></li>
+                <li><a href="#">Republic</a></li>
+                <li><a href="#"> Croatia</a></li>
+              </ul>
+              <p class="f-size14"><a href="#">More&gt;&gt;</a></p>
+            </div>
+          </div>
+          <!--/.countries-place -->
+
+          <div class="countries-map">
+            <img src="/assets/pic-map.jpg" alt="map" />
+          </div>
+          <!--/.countries-map -->
+
+        </div>
+        <!--/.countries -->
+
+      </div>
+      <!--/.content -->
+
+      <div class="sidebar fr">
+        <h2 class="title">My Viewed Hotels</h2>
+
+        <div class="view-hotels clearfix">
+          <ul class="mod-a">
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+          </ul>
+        </div>
+        <!--/.view-hotels -->
+
+        <div class="ads ads-440">
+          <a href="#"><img src="/assets/pic-ad.jpg" alt="Beijing Hotels" /></a>
+        </div>
+        <!--/.ads -->
+
+        <div class="view-hotels clearfix">
+          <ul class="mod-a">
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_6.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+
+            <li class="clearfix">
+            <div class="mod-pic pic-size80 fl">
+              <a href="#"><img src="/assets/p_3.jpg" alt="" /></a>
+            </div>
+            <div class="mod-info w340 fl">
+              <p><a href="#"><strong>Beijing RedWall Hotel</strong></a><span class="t_star t_star_5">星级</span></p>
+              <p><span class="fr f-size16">from</span>No. 2 Zhong Shan Dong Yi Road, Huangpu </p>
+              <p><span class="fl">Shanghai</span><span class="fr c-price">CNY 450</span></p>
+            </div>
+            </li>
+          </ul>
+        </div>
+        <!--/.view-hotels -->
+
+      </div>
+      <!--/.sidebar -->
+
+    </div>
+    <!--/.container -->

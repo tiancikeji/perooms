@@ -5,4 +5,10 @@ class HotelsearchController < ApplicationController
     @size =  @raw_info["HotelListResponse"]["HotelList"]["@size"]
     @hotels =  @raw_info["HotelListResponse"]["HotelList"]["HotelSummary"]
   end
+
+  def getlocations
+    @destinationString = params[:destinationString]
+    @raw_info = API.getLocations(@destinationString)
+    render :json => @raw_info
+  end
 end

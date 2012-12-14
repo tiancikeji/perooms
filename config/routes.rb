@@ -1,5 +1,6 @@
 Perooms::Application.routes.draw do
   post "hotelsearch/result"
+  get "hotelsearch/getlocations"
 
   resources :rooms
 
