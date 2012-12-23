@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002021131) do
+ActiveRecord::Schema.define(:version => 20121222060953) do
 
   create_table "hotels", :force => true do |t|
     t.string   "address1"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20121002021131) do
     t.string   "thumbNailUrl"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "confidence"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.string   "highrate"
   end
 
   create_table "pages", :force => true do |t|
