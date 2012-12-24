@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.8'
-gem 'sqlite3'
+gem 'mysql2'
 group :assets do
   # gem 'sass-rails',   '~> 3.2.3'
   # gem 'coffee-rails', '~> 3.2.1'
@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'quiet_assets', :group => [:development, :test]
 gem 'thin', :group => [:development]
 gem 'quiet_assets', :group => [:development]
-gem 'mysql2', :group => [:production]
 gem "rspec-rails", ">= 2.11.0", :group => [:development, :test]
 gem "factory_girl_rails", ">= 3.5.0", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test
