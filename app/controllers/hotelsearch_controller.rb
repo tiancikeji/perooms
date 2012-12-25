@@ -1,14 +1,10 @@
 class HotelsearchController < ApplicationController
   def result
-    @city = params[:city]
-    @raw_info = Hotel.getlist(@city,params[:province],params[:countrycode],params[:arrivalDate],params[:departureDate])
-    @size =  @raw_info["HotelListResponse"]["HotelList"]["@size"]
-    @hotels =  @raw_info["HotelListResponse"]["HotelList"]["HotelSummary"]
+    @hotels =  Hotel.limit(20)
   end
 
   def getlocations
-    @destinationString = params[:destinationString]
-    @raw_info = API.getLocations(@destinationString)
-    render :json => @raw_info
+    @hotels = Hotel.where("name like ?","%#{params[:destinationString]}%").limit(10)
+    render :json => @hotels
   end
 end
