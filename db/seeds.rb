@@ -23,8 +23,8 @@ File.open('/Users/vissul2008/Work/perooms/doc/Hotel_All_Active 12-16-12.txt', 'r
       ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
       valid_string = ic.iconv(line)
       array = valid_string.split('|')
-      p array[0]
       if !Hotel.where(:enahotel_id => array[0]).first
+        p array[0]
         Hotel.create! :enahotel_id => array[0],:name => array[1],
           :address1 => array[3],:address2=> array[4],
           :address3=> array[5], :airportCode=> array[2],
@@ -33,6 +33,7 @@ File.open('/Users/vissul2008/Work/perooms/doc/Hotel_All_Active 12-16-12.txt', 'r
           :longitude=> array[10],:latitude=> array[11],
           :highrate=> array[13], 
           :thumbNailUrl=> array[0]
+        next
       end
     end
   end
